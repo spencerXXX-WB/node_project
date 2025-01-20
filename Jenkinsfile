@@ -20,6 +20,7 @@ pipeline {
                 sh "npm test"
                }
         }
+        }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('soanrserver') {
@@ -44,5 +45,4 @@ pipeline {
         }
 
     
-}
 }
