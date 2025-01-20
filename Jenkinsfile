@@ -1,27 +1,48 @@
 pipeline {
-    agent {
-    label 'WorkerNode1'
-      }
-    tools {
-     nodejs 'Node'
-      }
+    agent any
+
+    environment {
+        HOME_SONAR = tool 'sonar-scanner'
+        }
 
     stages {
         }
          stage('NPM INSTALL') {
             steps {
-                sh "npm install"
+                nodejs('node20') {
+                    sh "npm install"
+                }
             }
         }
-        stage('NPM BUILD') {
+        stage('Test') {
             steps {
-                sh "npm run"
-            }
+                nodejs('node20') {
+                sh "npm test"
+               }
         }
-        stage('NPM START') {
+        stage('SonarQube Analysis') {
             steps {
-                sh "npm start"
+                withSonarQubeEnv('soanrserver') {
+                    sh '''
+                        $HOME_SONAR/bin/sonar-scanner \
+                        -Dsonar.projectKey=nodePoject \
+                        -Dsonar.projectName=NodeProject \
+                        -Dsonar.sources=. \
+                        -Dsonar.tests=. \
+                        -Dsonar.test.inclusions=**/*.test.js \
+                        -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+                       '''
+            }
             }
         }
+         stage('Quality gate') {
+            steps {
+              timeout(time: 1, unit: 'HOURS') {
+                waitForQualityGate abortPipeline: false, credentialsId: 'SonarSecret'
+                }
+            }
+        }
+
     
+}
 }
