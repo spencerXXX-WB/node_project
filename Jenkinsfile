@@ -6,7 +6,6 @@ pipeline {
         }
 
     stages {
-        }
          stage('NPM INSTALL') {
             steps {
                 nodejs('node20') {
@@ -19,7 +18,7 @@ pipeline {
                 nodejs('node20') {
                 sh "npm test"
                }
-        }
+            }
         }
         stage('SonarQube Analysis') {
             steps {
@@ -33,7 +32,7 @@ pipeline {
                         -Dsonar.test.inclusions=**/*.test.js \
                         -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
                        '''
-            }
+                    }
             }
         }
          stage('Quality gate') {
@@ -45,4 +44,5 @@ pipeline {
         }
 
     
+    }
 }
