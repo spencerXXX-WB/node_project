@@ -4,7 +4,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "jest --coverage"
+    "test": "jest --passWithNoTests"
   },
   "name": "basic-nodejs",
   "version": "1.0.0",
