@@ -9,7 +9,9 @@
   "name": "basic-nodejs",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
   "author": "Spencer",
   "license": "MIT",
   "description": "NodeJS Project with Expres FrameWork and Running in Docker Container"
