@@ -6,14 +6,14 @@ pipeline {
         }
 
     stages {
-         stage('NPM INSTALL') {
-            stage('Install Dependencies') {
-                steps {
-                    nodejs('node20') {
-                    sh 'npm ci'
-                    }
-                }
+        stage('Install Dependencies') {
+            steps {
+               nodejs('node20'){
+                 sh 'npm ci'
+               }
             }
+        }
+         stage('Npm Install') {
             steps {
                 nodejs('node20') {
                     sh "npm install"
