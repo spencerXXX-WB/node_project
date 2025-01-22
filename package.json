@@ -12,9 +12,7 @@
   "devDependencies": {
     "jest": "^29.7.0"
   },
-  "publishConfig": {
-  "registry": "http://3.84.200.230:8081/repository/npmspencer/"
-},
+
   "author": "Spencer",
   "license": "MIT",
   "description": "NodeJS Project with Expres FrameWork and Running in Docker Container"
