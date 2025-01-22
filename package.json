@@ -16,3 +16,7 @@
   "license": "MIT",
   "description": "NodeJS Project with Expres FrameWork and Running in Docker Container"
 }
+"repository": {
+  "type": "npm",
+  "url": "http://3.84.200.230:8081/repository/npmspencer/"
+}
