@@ -12,9 +12,8 @@
   "devDependencies": {
     "jest": "^29.7.0"
   },
-  "repository": {
-  "type": "npm",
-  "url": "http://3.84.200.230:8081/repository/npmspencer/"
+  "publishConfig": {
+  "registry": "http://3.84.200.230:8081/repository/npmspencer/"
 },
   "author": "Spencer",
   "license": "MIT",
